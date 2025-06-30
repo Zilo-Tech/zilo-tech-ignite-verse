@@ -28,15 +28,15 @@ export default {
 				primary: {
 					DEFAULT: '#2980B9',
 					foreground: '#ffffff',
-					50: '#E3F2FD',
-					100: '#BBDEFB',
-					200: '#90CAF9',
-					300: '#64B5F6',
-					400: '#42A5F5',
+					50: '#EBF8FF',
+					100: '#BEE3F8',
+					200: '#90CDF4',
+					300: '#63B3ED',
+					400: '#4299E1',
 					500: '#2980B9',
-					600: '#1E88E5',
-					700: '#1976D2',
-					800: '#1565C0',
+					600: '#2B77AB',
+					700: '#2C5282',
+					800: '#2A4365',
 					900: '#023657'
 				},
 				secondary: {
@@ -74,25 +74,17 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
 				},
 				'fade-in': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateY(20px)'
+						transform: 'translateY(30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -102,7 +94,7 @@ export default {
 				'slide-in': {
 					'0%': {
 						opacity: '0',
-						transform: 'translateX(-20px)'
+						transform: 'translateX(30px)'
 					},
 					'100%': {
 						opacity: '1',
@@ -114,16 +106,34 @@ export default {
 						transform: 'translateY(0px)'
 					},
 					'50%': {
-						transform: 'translateY(-10px)'
+						transform: 'translateY(-20px)'
+					}
+				},
+				'pulse': {
+					'0%, 100%': {
+						opacity: '1'
+					},
+					'50%': {
+						opacity: '0.5'
 					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'fade-in': 'fade-in 0.6s ease-out',
-				'slide-in': 'slide-in 0.6s ease-out',
-				'float': 'float 3s ease-in-out infinite'
+				'fade-in': 'fade-in 0.8s ease-out',
+				'slide-in': 'slide-in 0.8s ease-out',
+				'float': 'float 4s ease-in-out infinite',
+				'pulse': 'pulse 2s ease-in-out infinite'
+			},
+			backgroundImage: {
+				'grid-pattern': `
+					linear-gradient(to right, rgb(0 0 0 / 0.1) 1px, transparent 1px),
+					linear-gradient(to bottom, rgb(0 0 0 / 0.1) 1px, transparent 1px)
+				`,
+			},
+			backgroundSize: {
+				'grid-pattern': '20px 20px'
 			}
 		}
 	},

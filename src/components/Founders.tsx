@@ -1,59 +1,101 @@
 
+import { Quote, Linkedin, Twitter } from 'lucide-react';
+
 const Founders = () => {
   const founders = [
     {
       name: "Nyuydine Bill",
       role: "CEO | Founder",
       quote: "Believe in Possibilities!",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=400&fit=crop&crop=face"
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=400&fit=crop&crop=face",
+      bio: "Visionary leader with a passion for transforming ideas into reality.",
+      social: {
+        linkedin: "#",
+        twitter: "#"
+      }
     },
     {
       name: "Kongyuy Livingston",
       role: "CTO | Founder",
       quote: "In the midst of difficulty lies opportunity.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face"
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
+      bio: "Tech innovator dedicated to building scalable solutions.",
+      social: {
+        linkedin: "#",
+        twitter: "#"
+      }
     }
   ];
 
   return (
-    <section className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-primary-900 mb-6">
+    <section id="founders" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="text-center mb-20 animate-fade-in">
+          <div className="inline-flex items-center bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <Quote size={16} className="mr-2" />
+            Meet Our Team
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-8">
             Our Founders
           </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Meet the visionary founders of ZiloTech, who are dedicated to driving innovation and excellence.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 max-w-5xl mx-auto">
           {founders.map((founder, index) => (
             <div 
               key={index}
-              className="text-center group animate-fade-in"
+              className="group text-center animate-fade-in"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
-              <div className="relative mb-6 inline-block">
-                <div className="w-48 h-48 mx-auto rounded-full overflow-hidden shadow-xl group-hover:shadow-2xl transition-all duration-300 group-hover:scale-105">
+              <div className="relative mb-8 inline-block">
+                {/* Main Image */}
+                <div className="relative w-64 h-64 mx-auto rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-all duration-500">
                   <img 
                     src={founder.image} 
                     alt={founder.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary/20 to-primary-600/20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                
+                {/* Floating Gradient Ring */}
+                <div className="absolute inset-0 -m-4 rounded-3xl bg-gradient-to-r from-primary to-primary-600 opacity-20 blur-xl group-hover:opacity-30 transition-opacity duration-500"></div>
+                
+                {/* Social Icons */}
+                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0">
+                  <a href={founder.social.linkedin} className="w-10 h-10 bg-white shadow-lg rounded-xl flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                    <Linkedin size={18} />
+                  </a>
+                  <a href={founder.social.twitter} className="w-10 h-10 bg-white shadow-lg rounded-xl flex items-center justify-center hover:bg-primary hover:text-white transition-colors">
+                    <Twitter size={18} />
+                  </a>
+                </div>
               </div>
               
-              <h3 className="text-2xl font-bold text-primary-900 mb-2">
-                {founder.name}
-              </h3>
-              <p className="text-primary font-semibold text-lg mb-4">
-                {founder.role}
-              </p>
-              <blockquote className="text-gray-600 italic text-lg font-medium">
-                "{founder.quote}"
-              </blockquote>
+              <div className="space-y-4">
+                <h3 className="text-3xl font-bold text-gray-900 group-hover:text-primary transition-colors">
+                  {founder.name}
+                </h3>
+                <p className="text-primary font-semibold text-lg">
+                  {founder.role}
+                </p>
+                <p className="text-gray-600 max-w-md mx-auto">
+                  {founder.bio}
+                </p>
+                
+                {/* Quote */}
+                <div className="bg-gradient-to-r from-primary/10 to-primary-600/10 rounded-2xl p-6 mt-6 relative">
+                  <Quote size={24} className="text-primary/30 absolute top-4 left-4" />
+                  <blockquote className="text-gray-700 italic text-lg font-medium pl-8">
+                    "{founder.quote}"
+                  </blockquote>
+                </div>
+              </div>
             </div>
           ))}
         </div>
