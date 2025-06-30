@@ -55,8 +55,8 @@ const Header = () => {
   ];
 
   return (
-    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+    <header className={`w-full z-50 transition-all duration-300 py-2 ${
+      isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg fixed top-0 ' : 'bg-[#023657]'
     }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
@@ -69,7 +69,7 @@ const Header = () => {
               alt="ZiloTech Logo" 
               className="w-8 h-8 group-hover:scale-110 transition-transform duration-300"
             />
-            <div className="text-2xl font-bold text-primary group-hover:text-primary-600 transition-colors">
+            <div className={`${isScrolled ? 'text-primary' : 'text-white'} hidden md:block text-2xl font-bold group-hover:text-primary-600 transition-colors`}>
               ZiloTech
             </div>
           </button>
@@ -80,7 +80,7 @@ const Header = () => {
               <button
                 key={item.label}
                 onClick={() => handleNavigation(item.href)}
-                className="text-gray-700 hover:text-primary transition-colors font-medium relative group"
+                className={`${isScrolled ? 'text-gray-700' : 'text-white'} hover:text-primary transition-colors font-medium relative group`}
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
@@ -91,7 +91,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden md:block">
             <Button 
-              className="bg-primary hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                className={`${isScrolled ? 'text-primary border-primary' : ' text-white border-white'} bg-transparent text-lg border  font-semibold p-6 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-lg`}
               onClick={() => handleNavigation('#contact')}
             >
               Get Started
@@ -100,7 +100,7 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-700 hover:text-primary transition-colors"
+            className="md:hidden text-white hover:text-primary transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -115,7 +115,7 @@ const Header = () => {
                 <button
                   key={item.label}
                   onClick={() => handleNavigation(item.href)}
-                  className="text-gray-700 hover:text-primary transition-colors font-medium py-2 text-left"
+                  className={` ${isScrolled ? 'text-gray-700' : 'text-white'}  hover:text-primary transition-colors font-medium py-2 text-left`}
                 >
                   {item.label}
                 </button>
