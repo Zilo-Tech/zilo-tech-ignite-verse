@@ -1,7 +1,5 @@
-
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Download, ExternalLink, Smartphone, Utensils, Globe, Shield, BookOpen } from 'lucide-react';
+import { Smartphone, Utensils, Globe, Shield, BookOpen } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -9,7 +7,6 @@ const Projects = () => {
       title: "Z-Learn",
       description: "Z-Learn is a mobile app that provides students going in for exams with exam resources to use in preparation. It offers several features such as past questions, mark guides, Z-Bot, chat forums, announcements, and more.",
       image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
-      action: "Download",
       icon: BookOpen,
       gradient: "from-blue-500 to-indigo-600",
       category: "Education"
@@ -18,7 +15,6 @@ const Projects = () => {
       title: "Yamo",
       description: "Yamo is a food booking app that allows people to order food from the comfort of their homes, providing an excellent experience for users.",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
-      action: "Download",
       icon: Utensils,
       gradient: "from-green-500 to-emerald-600",
       category: "Food & Delivery"
@@ -27,7 +23,6 @@ const Projects = () => {
       title: "ContriTok",
       description: "ContriTok is an app that allows Cameroonians to learn their mother tongues and culture, all in one place.",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop",
-      action: "Download",
       icon: Globe,
       gradient: "from-purple-500 to-violet-600",
       category: "Culture & Language"
@@ -36,7 +31,6 @@ const Projects = () => {
       title: "BOLO",
       description: "BOLO is a local job search platform for Cameroonians to find local and unprofessional jobs easily.",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop",
-      action: "Visit",
       icon: Smartphone,
       gradient: "from-orange-500 to-red-500",
       category: "Job Platform"
@@ -45,7 +39,6 @@ const Projects = () => {
       title: "CyberShield",
       description: "CyberShield is a mobile app that sensitizes Cameroonians on how to stay safe on the internet.",
       image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&h=400&fit=crop",
-      action: "Download",
       icon: Shield,
       gradient: "from-red-500 to-pink-500",
       category: "Cybersecurity"
@@ -53,7 +46,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-24 bg-white relative overflow-hidden">
+    <section id="projects" className="py-24 bg-white relative overflow-hidden tech-grid">
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-indigo-50/50"></div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -105,19 +98,9 @@ const Projects = () => {
                 </CardHeader>
                 
                 <CardContent className="pt-0">
-                  <CardDescription className="text-gray-600 mb-6 leading-relaxed line-clamp-3">
+                  <CardDescription className="text-gray-600 leading-relaxed">
                     {project.description}
                   </CardDescription>
-                  <Button 
-                    className={`w-full bg-gradient-to-r ${project.gradient} hover:opacity-90 text-white font-medium py-3 px-4 rounded-lg transition-all duration-300 hover:shadow-lg group`}
-                  >
-                    {project.action}
-                    {project.action === "Download" ? (
-                      <Download size={16} className="ml-2 group-hover:translate-y-0.5 transition-transform" />
-                    ) : (
-                      <ExternalLink size={16} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
-                    )}
-                  </Button>
                 </CardContent>
               </Card>
             );

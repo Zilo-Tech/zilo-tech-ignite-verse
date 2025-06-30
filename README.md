@@ -1,38 +1,36 @@
-# Welcome to your Lovable project
+# ZiloTech Ignite Verse
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/d3dbc305-94aa-467b-bb94-9d6245066713
+This is the official repository for the ZiloTech Ignite Verse website and platform.
 
 ## How can I edit this code?
 
-There are several ways of editing your application.
+You can edit this project using your preferred local development environment or directly on GitHub.
 
-**Use Lovable**
+**Local Development**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d3dbc305-94aa-467b-bb94-9d6245066713) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+1. Clone the repository using your project's Git URL:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
 git clone <YOUR_GIT_URL>
+```
 
-# Step 2: Navigate to the project directory.
+2. Navigate to the project directory:
+
+```sh
 cd <YOUR_PROJECT_NAME>
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Install the necessary dependencies:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```sh
+npm install
+```
+
+4. Start the development server with auto-reloading and instant preview:
+
+```sh
 npm run dev
 ```
 
@@ -62,12 +60,16 @@ This project is built with:
 
 ## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/d3dbc305-94aa-467b-bb94-9d6245066713) and click on Share -> Publish.
+You can deploy this project to any static hosting provider that supports Vite/React builds, such as Vercel, Netlify, or GitHub Pages.
 
-## Can I connect a custom domain to my Lovable project?
+1. Build the project for production:
 
-Yes, you can!
+```sh
+npm run build
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+2. Deploy the contents of the `dist` folder to your chosen hosting provider.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## Can I connect a custom domain?
+
+Yes! Most hosting providers allow you to connect a custom domain. Please refer to your hosting provider's documentation for step-by-step instructions on connecting a domain.

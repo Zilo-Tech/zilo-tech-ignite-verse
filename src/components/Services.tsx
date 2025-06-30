@@ -1,5 +1,4 @@
-
-import { Code, Palette, Smartphone, Search, ArrowRight } from 'lucide-react';
+import { Code, Smartphone, Search, Brain, ArrowRight } from 'lucide-react';
 
 const Services = () => {
   const services = [
@@ -10,16 +9,16 @@ const Services = () => {
       features: ["Responsive Design", "Performance Optimization", "SEO Ready", "Modern Frameworks"]
     },
     {
-      title: "UI/UX Design",
-      description: "Our UI/UX design services blend creativity with functionality to leave a lasting impression on your users.",
-      icon: Palette,
-      features: ["User Research", "Wireframing", "Prototyping", "Visual Design"]
-    },
-    {
       title: "Mobile Development",
       description: "Our mobile development services cater to both iOS and Android platforms, ensuring your business reaches users wherever they are.",
       icon: Smartphone,
       features: ["Native Apps", "Cross-Platform", "App Store Optimization", "Maintenance"]
+    },
+    {
+      title: "Data Science & AI",
+      description: "Harness the power of artificial intelligence and data analytics to drive intelligent business decisions and automate complex processes.",
+      icon: Brain,
+      features: ["Machine Learning", "Data Analytics", "AI Chatbots", "Predictive Modeling"]
     },
     {
       title: "Search Engine Optimization",
@@ -30,7 +29,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 relative overflow-hidden">
+    <section id="services" className="py-24 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 relative overflow-hidden neural-matrix-complex">
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 -right-20 w-80 h-80 bg-white/5 rounded-full blur-3xl animate-float"></div>
@@ -54,7 +53,7 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
@@ -87,7 +86,12 @@ const Services = () => {
                   </ul>
                   
                   {/* Learn More Link */}
-                  <button className="inline-flex items-center text-white hover:text-blue-200 transition-colors group/btn">
+                  <button
+                    className="inline-flex items-center text-white hover:text-blue-200 transition-colors group/btn"
+                    onClick={() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
                     <span className="text-sm font-medium">Learn More</span>
                     <ArrowRight size={16} className="ml-2 group-hover/btn:translate-x-1 transition-transform" />
                   </button>

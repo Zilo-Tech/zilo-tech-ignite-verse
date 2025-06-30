@@ -18,7 +18,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section id="about" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden circuit-bg">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       

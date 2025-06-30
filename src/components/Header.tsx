@@ -1,11 +1,13 @@
-
 import { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,13 +17,40 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleNavigation = (href: string) => {
+    if (href.startsWith('#')) {
+      // If we're not on the home page, navigate to home first
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation to complete, then scroll to section
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // If we're on home page, just scroll to section
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } else {
+      // For non-anchor links, navigate normally
+      navigate(href);
+    }
+    setIsMenuOpen(false);
+  };
+
   const navItems = [
     { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
+    { label: 'About', href: '/about' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Founders', href: '#founders' },
+    { label: 'Team', href: '/team' },
     { label: 'Services', href: '#services' },
     { label: 'Blog', href: '/blog' },
+    { label: 'Testimonials', href: '#testimonials' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -31,27 +60,40 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold text-primary">
-            ZiloTech
-          </div>
+          <button 
+            onClick={() => handleNavigation('#home')} 
+            className="flex items-center space-x-3 group"
+          >
+            <img 
+              src="/assets/images/zilotech-favicon-bgtransparent.png" 
+              alt="ZiloTech Logo" 
+              className="w-8 h-8 group-hover:scale-110 transition-transform duration-300"
+            />
+            <div className="text-2xl font-bold text-primary group-hover:text-primary-600 transition-colors">
+              ZiloTech
+            </div>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <a
+              <button
                 key={item.label}
-                href={item.href}
+                onClick={() => handleNavigation(item.href)}
                 className="text-gray-700 hover:text-primary transition-colors font-medium relative group"
               >
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-              </a>
+              </button>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-primary hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg">
+            <Button 
+              className="bg-primary hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              onClick={() => handleNavigation('#contact')}
+            >
               Get Started
             </Button>
           </div>
@@ -70,16 +112,18 @@ const Header = () => {
           <nav className="md:hidden mt-6 pb-6 animate-fade-in">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.label}
-                  href={item.href}
-                  className="text-gray-700 hover:text-primary transition-colors font-medium py-2"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => handleNavigation(item.href)}
+                  className="text-gray-700 hover:text-primary transition-colors font-medium py-2 text-left"
                 >
                   {item.label}
-                </a>
+                </button>
               ))}
-              <Button className="bg-primary hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg mt-4">
+              <Button 
+                className="bg-primary hover:bg-primary-600 text-white font-semibold px-6 py-3 rounded-lg mt-4"
+                onClick={() => handleNavigation('#contact')}
+              >
                 Get Started
               </Button>
             </div>

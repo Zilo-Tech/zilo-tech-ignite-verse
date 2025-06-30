@@ -1,4 +1,3 @@
-
 export interface BlogPost {
   id: string;
   title: string;
@@ -53,7 +52,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "5 min read",
     category: "Investment",
     tags: ["Investment", "Technology", "Innovation"],
-    image: "/placeholder.svg",
+    image: "/assets/images/ZiloTech Official Logo.png",
     reactions: {
       likes: 45,
       loves: 23,
@@ -102,7 +101,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "7 min read",
     category: "Education",
     tags: ["Education", "AI", "Mobile App", "Z-Learn"],
-    image: "/placeholder.svg",
+    image: "/assets/images/z-learn.jpeg",
     reactions: {
       likes: 67,
       loves: 34,
@@ -142,7 +141,7 @@ export const blogPosts: BlogPost[] = [
     readTime: "6 min read",
     category: "Food Tech",
     tags: ["Food Delivery", "AI", "Investment", "YAMO"],
-    image: "/placeholder.svg",
+    image: "/assets/images/yamo.png",
     reactions: {
       likes: 52,
       loves: 28,

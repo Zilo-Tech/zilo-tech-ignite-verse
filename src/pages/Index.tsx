@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -22,8 +21,8 @@ const Index = () => {
       <Founders />
       <Services />
       <Partnership />
-      <Testimonials />
       <Blog />
+      <Testimonials />
       <Newsletter />
       <Contact />
       <Footer />

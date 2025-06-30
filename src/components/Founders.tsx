@@ -1,5 +1,6 @@
-
-import { Quote, Linkedin, Twitter } from 'lucide-react';
+import { Quote, Linkedin, Twitter, Users } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Founders = () => {
   const founders = [
@@ -7,7 +8,7 @@ const Founders = () => {
       name: "Nyuydine Bill",
       role: "CEO | Founder",
       quote: "Believe in Possibilities!",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=400&fit=crop&crop=face",
+      image: "/assets/images/nyuydine.jpeg",
       bio: "Visionary leader with a passion for transforming ideas into reality.",
       social: {
         linkedin: "#",
@@ -18,8 +19,8 @@ const Founders = () => {
       name: "Kongyuy Livingston",
       role: "CTO | Founder",
       quote: "In the midst of difficulty lies opportunity.",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=400&fit=crop&crop=face",
-      bio: "Tech innovator dedicated to building scalable solutions.",
+      image: "/assets/images/kongnyuy.jpeg",
+      bio: "Tech innovator dedicated to building scalable solutions that meets client goals.",
       social: {
         linkedin: "#",
         twitter: "#"
@@ -28,7 +29,7 @@ const Founders = () => {
   ];
 
   return (
-    <section id="founders" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section id="founders" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden glowing-orbs">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -87,17 +88,19 @@ const Founders = () => {
                 <p className="text-gray-600 max-w-md mx-auto">
                   {founder.bio}
                 </p>
-                
-                {/* Quote */}
-                <div className="bg-gradient-to-r from-primary/10 to-primary-600/10 rounded-2xl p-6 mt-6 relative">
-                  <Quote size={24} className="text-primary/30 absolute top-4 left-4" />
-                  <blockquote className="text-gray-700 italic text-lg font-medium pl-8">
-                    "{founder.quote}"
-                  </blockquote>
-                </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View Full Team Button */}
+        <div className="text-center mt-16 animate-fade-in" style={{ animationDelay: '0.6s' }}>
+          <Link to="/team">
+            <Button size="lg" className="bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-8 py-4 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105 group">
+              <Users size={20} className="mr-3 group-hover:animate-pulse" />
+              View Full Team
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

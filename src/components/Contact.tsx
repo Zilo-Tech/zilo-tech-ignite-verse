@@ -1,12 +1,44 @@
-
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { MapPin, Mail, Phone, Send } from 'lucide-react';
+import { MapPin, Mail, Phone, Send, CheckCircle } from 'lucide-react';
 
 const Contact = () => {
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setError('');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    if (!form.name || !form.email || !form.subject || !form.message) {
+      setError('Please fill in all fields.');
+      return;
+    }
+    // Basic email validation
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) {
+      setError('Please enter a valid email address.');
+      return;
+    }
+    setLoading(true);
+    // Simulate sending
+    setTimeout(() => {
+      setLoading(false);
+      setSuccess(true);
+      setForm({ name: '', email: '', subject: '', message: '' });
+      setTimeout(() => setSuccess(false), 4000);
+    }, 1800);
+  };
+
   return (
-    <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <section id="contact" className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden tech-particles">
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       <div className="container mx-auto px-6 relative z-10">
@@ -76,72 +108,95 @@ const Contact = () => {
           <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <div className="bg-white rounded-3xl shadow-2xl p-10 border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-8">Send us a message</h3>
-              
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              {success ? (
+                <div className="flex flex-col items-center justify-center text-green-600 animate-fade-in">
+                  <CheckCircle size={32} className="mb-2" />
+                  <span className="text-lg font-semibold">Thank you! Your message has been sent. We'll get back to you soon.</span>
+                </div>
+              ) : (
+                <form className="space-y-6" onSubmit={handleSubmit}>
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-3">
+                        First Name
+                      </label>
+                      <Input 
+                        type="text" 
+                        name="name"
+                        placeholder="Your first name"
+                        className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl focus:border-primary transition-colors"
+                        value={form.name}
+                        onChange={handleChange}
+                        disabled={loading}
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-semibold text-gray-700 mb-3">
+                        Email
+                      </label>
+                      <Input 
+                        type="email" 
+                        name="email"
+                        placeholder="Your email address"
+                        className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl focus:border-primary transition-colors"
+                        value={form.email}
+                        onChange={handleChange}
+                        disabled={loading}
+                      />
+                    </div>
+                  </div>
+
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
-                      First Name
+                      Subject
                     </label>
                     <Input 
                       type="text" 
-                      placeholder="Your first name"
+                      name="subject"
+                      placeholder="What's this about?"
                       className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl focus:border-primary transition-colors"
+                      value={form.subject}
+                      onChange={handleChange}
+                      disabled={loading}
                     />
                   </div>
+
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-3">
-                      Last Name
+                      Message
                     </label>
-                    <Input 
-                      type="text" 
-                      placeholder="Your last name"
-                      className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl focus:border-primary transition-colors"
+                    <Textarea 
+                      name="message"
+                      placeholder="Tell us about your project..."
+                      rows={5}
+                      className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary transition-colors resize-none"
+                      value={form.message}
+                      onChange={handleChange}
+                      disabled={loading}
                     />
                   </div>
-                </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    Email Address
-                  </label>
-                  <Input 
-                    type="email" 
-                    placeholder="your.email@example.com"
-                    className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl focus:border-primary transition-colors"
-                  />
-                </div>
+                  {error && <div className="text-red-600 text-sm font-medium">{error}</div>}
 
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    Subject
-                  </label>
-                  <Input 
-                    type="text" 
-                    placeholder="What's this about?"
-                    className="w-full h-12 px-4 border-2 border-gray-200 rounded-xl focus:border-primary transition-colors"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-3">
-                    Message
-                  </label>
-                  <Textarea 
-                    placeholder="Tell us about your project..."
-                    rows={5}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-primary transition-colors resize-none"
-                  />
-                </div>
-
-                <Button 
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-xl group"
-                >
-                  Send Message
-                  <Send size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </form>
+                  <Button 
+                    type="submit"
+                    className="w-full bg-gradient-to-r from-primary to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 hover:shadow-xl group flex items-center justify-center"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      <>
+                        <svg className="animate-spin h-5 w-5 mr-2 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message
+                        <Send size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              )}
             </div>
           </div>
         </div>

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -7,6 +6,7 @@ import { ArrowRight, Calendar, Clock, User, Search, Tag } from 'lucide-react';
 import { blogPosts } from '@/data/blogData';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const BlogPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -142,6 +142,8 @@ const BlogPage = () => {
           )}
         </div>
       </section>
+
+      <Footer />
     </div>
   );
 };

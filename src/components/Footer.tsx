@@ -1,8 +1,41 @@
-
 import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const [footerEmail, setFooterEmail] = useState('');
+  const [footerSubscribed, setFooterSubscribed] = useState(false);
+  const [footerError, setFooterError] = useState('');
+  const [footerLoading, setFooterLoading] = useState(false);
+
+  const handleNavigation = (href: string) => {
+    if (href.startsWith('#')) {
+      // If we're not on the home page, navigate to home first
+      if (location.pathname !== '/') {
+        navigate('/');
+        // Wait for navigation to complete, then scroll to section
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // If we're on home page, just scroll to section
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    } else {
+      // For non-anchor links, navigate normally
+      navigate(href);
+    }
+  };
 
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
@@ -15,8 +48,10 @@ const Footer = () => {
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
     { label: "Projects", href: "#projects" },
-    { label: "Founders", href: "#founders" },
+    { label: "Team", href: "/team" },
     { label: "Services", href: "#services" },
+    { label: "Blog", href: "/blog" },
+    { label: "Testimonials", href: "#testimonials" },
     { label: "Contact", href: "#contact" }
   ];
 
@@ -63,15 +98,15 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
-                    href={link.href} 
-                    className="text-blue-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block group"
+                  <button 
+                    onClick={() => handleNavigation(link.href)}
+                    className="text-blue-200 hover:text-white transition-colors duration-300 hover:translate-x-1 inline-block group text-left"
                   >
                     <span className="relative">
                       {link.label}
                       <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
                     </span>
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -105,16 +140,54 @@ const Footer = () => {
           <div className="max-w-2xl mx-auto text-center">
             <h4 className="text-2xl font-bold text-white mb-4">Stay Updated</h4>
             <p className="text-blue-200 mb-6">Subscribe to our newsletter for the latest updates and insights.</p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:border-white/40 transition-colors"
-              />
-              <button className="px-6 py-3 bg-white text-primary font-semibold rounded-xl hover:bg-blue-50 transition-colors hover:scale-105 transform duration-300">
-                Subscribe
-              </button>
-            </div>
+            {footerSubscribed ? (
+              <div className="flex items-center justify-center text-white animate-fade-in">
+                <span className="text-lg font-semibold">Thank you for subscribing!</span>
+              </div>
+            ) : (
+              <form
+                className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto"
+                onSubmit={e => {
+                  e.preventDefault();
+                  setFooterError('');
+                  if (!footerEmail) {
+                    setFooterError('Please enter your email address.');
+                    return;
+                  }
+                  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(footerEmail)) {
+                    setFooterError('Please enter a valid email address.');
+                    return;
+                  }
+                  setFooterLoading(true);
+                  setTimeout(() => {
+                    setFooterSubscribed(true);
+                    setFooterEmail('');
+                    setFooterLoading(false);
+                    setTimeout(() => setFooterSubscribed(false), 4000);
+                  }, 1500);
+                }}
+              >
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 text-white placeholder-blue-200 focus:outline-none focus:border-white/40 transition-colors"
+                  value={footerEmail}
+                  onChange={e => setFooterEmail(e.target.value)}
+                  disabled={footerLoading}
+                />
+                <button 
+                  type="submit"
+                  className="px-6 py-3 bg-white text-primary font-semibold rounded-xl hover:bg-blue-50 transition-colors hover:scale-105 transform duration-300 flex items-center justify-center"
+                  disabled={footerLoading}
+                >
+                  {footerLoading ? (
+                    <svg className="animate-spin h-5 w-5 mr-2 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path></svg>
+                  ) : null}
+                  Subscribe
+                </button>
+              </form>
+            )}
+            {footerError && <div className="text-red-300 text-sm font-medium mt-2">{footerError}</div>}
           </div>
         </div>
 

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -7,6 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Input } from '@/components/ui/input';
 import { blogPosts } from '@/data/blogData';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { 
   Calendar, 
   Clock, 
@@ -227,6 +227,8 @@ const BlogPostPage = () => {
           </Card>
         </div>
       </article>
+
+      <Footer />
     </div>
   );
 };

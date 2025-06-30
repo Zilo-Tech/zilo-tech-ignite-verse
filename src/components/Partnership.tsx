@@ -1,4 +1,3 @@
-
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { 
@@ -67,7 +66,7 @@ const Partnership = () => {
   ];
 
   return (
-    <section id="partnership" className="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
+    <section id="partnership" className="py-24 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden code-rain">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
@@ -116,7 +115,13 @@ const Partnership = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-white transition-colors">
+                  <Button 
+                    variant="outline" 
+                    className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
+                    onClick={() => {
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
                     Learn More
                     <ArrowRight size={16} className="ml-2" />
                   </Button>
@@ -157,11 +162,25 @@ const Partnership = () => {
             Let's discuss how we can create mutual value and drive innovation together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-4">
+            <Button 
+              size="lg" 
+              variant="secondary" 
+              className="bg-white text-primary hover:bg-gray-100 font-semibold px-8 py-4"
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Partnership Inquiry
               <Handshake size={20} className="ml-2" />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-4">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-primary font-semibold px-8 py-4"
+              onClick={() => {
+                window.location.href = 'mailto:info@zilotech.org?subject=Investment Inquiry';
+              }}
+            >
               Investment Details
               <TrendingUp size={20} className="ml-2" />
             </Button>

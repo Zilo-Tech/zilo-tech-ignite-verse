@@ -9,7 +9,7 @@ const Blog = () => {
   const featuredPosts = blogPosts.slice(0, 3);
 
   return (
-    <section id="blog" className="py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <section id="blog" className="py-20 bg-gradient-to-br from-blue-50 via-white to-indigo-50 data-stream">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary-900 to-primary bg-clip-text text-transparent">

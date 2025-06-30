@@ -4,7 +4,7 @@ import { ArrowRight, Sparkles } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50">
+    <section id="home" className="min-h-screen flex items-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-indigo-50 neural-matrix">
       {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-20 -right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl animate-float"></div>
@@ -41,25 +41,35 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button 
                 size="lg" 
-                className="bg-primary hover:bg-primary-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-xl group"
+                className="modern-btn modern-btn-primary px-8 py-4"
+                onClick={() => {
+                  document.getElementById('contact')?.scrollIntoView({ 
+                    behavior: 'smooth' 
+                  });
+                }}
               >
                 Get Started
-                <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={20} className="icon-right" />
               </Button>
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105"
+                className="modern-btn modern-btn-outline px-8 py-4"
+                onClick={() => {
+                  document.getElementById('about')?.scrollIntoView({ 
+                    behavior: 'smooth' 
+                  });
+                }}
               >
                 Learn More
               </Button>
             </div>
           </div>
 
-          {/* Right Content - Tech Illustration */}
+          {/* Right Content - CEO Image */}
           <div className="relative animate-slide-in" style={{ animationDelay: '0.2s' }}>
             <div className="relative max-w-lg mx-auto">
-              {/* Main Card */}
+              {/* Main Card with CEO Image */}
               <div className="bg-white rounded-3xl p-8 shadow-2xl border border-gray-100 transform hover:scale-105 transition-all duration-500">
                 <div className="space-y-6">
                   {/* Header */}
@@ -72,17 +82,21 @@ const Hero = () => {
                     <div className="text-xs text-gray-400 font-mono">ZiloTech</div>
                   </div>
                   
-                  {/* Content */}
-                  <div className="space-y-4">
-                    <div className="h-6 bg-gradient-to-r from-primary to-primary-600 rounded-lg animate-pulse"></div>
-                    <div className="space-y-3">
-                      <div className="h-3 bg-gray-200 rounded animate-pulse"></div>
-                      <div className="h-3 bg-gray-200 rounded w-4/5 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                      <div className="h-3 bg-gray-200 rounded w-3/5 animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                  {/* Team at Work */}
+                  <div className="text-center">
+                    <div className="relative w-72 h-72 mx-auto mb-4">
+                      <img 
+                        src="/assets/images/bill.jpeg" 
+                        alt="ZiloTech Team at Work"
+                        className="w-full h-full object-cover rounded-2xl shadow-lg"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent rounded-2xl"></div>
                     </div>
-                    <div className="mt-6 bg-primary/10 rounded-xl p-4">
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">Our Team at Work</h3>
+                    <p className="text-primary font-semibold mb-3">Building the Future</p>
+                    <div className="bg-primary/10 rounded-xl p-4">
                       <div className="flex items-center justify-between">
-                        <span className="text-primary font-medium">Innovation Ready</span>
+                        <span className="text-primary font-medium">"Ready to Transform Your Business?"</span>
                         <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                           <div className="w-3 h-3 bg-white rounded-full animate-ping"></div>
                         </div>
