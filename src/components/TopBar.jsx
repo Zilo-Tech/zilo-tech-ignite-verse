@@ -4,8 +4,8 @@ import React from 'react'
 export default function TopBar() {
   return (
     <div>
-      <div className="py-3 border"> {/* Added some basic styling */}
-      <div className="container mx-auto px-4">
+      <div className="py-3 border px-20"> {/* Added some basic styling */}
+      <div className="">
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Left Section */}
           <div className="top-bar-left mb-2 md:mb-0">

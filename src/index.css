@@ -103,6 +103,11 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
+.lobster-regular {
+  font-family: "Lobster", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 /* Tech-themed Background Animations */
 @layer components {

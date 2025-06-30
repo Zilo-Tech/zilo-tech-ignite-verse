@@ -19,9 +19,9 @@ function Hero() {
               {/* Header */}
               <div className="flex items-center justify-between">
                 <div className="flex space-x-2 py-2">
-                  <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                  <div className="w-8 h-8 bg-red-400 rounded-full"></div>
+                  <div className="w-8 h-8 bg-yellow-400 rounded-full"></div>
+                  <div className="w-8 h-8 bg-green-400 rounded-full"></div>
                 </div>
                 <div className="text-xs text-gray-400 font-mono">ZiloTech</div>
               </div>
@@ -55,10 +55,10 @@ function Hero() {
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             <span className="text-white">
-              Zeal Fuels
+              Zeal <span className='lobster-regular'>Fuels</span>
             </span>
             <br />
-            <span className="text-primary">Innovation</span>
+            <span className="text-primary lobster-regular ">Innovation</span>
           </h1>
 
           <div className="mb-8 space-y-4">
@@ -101,8 +101,8 @@ function Hero() {
           {/* Features Section */}
           <div className="d-flex align-items-center justify-content-between flex-wrap mt-16 lg:mt-20 md:mt-12">
             <div className="fact-feature mt-6 flex items-center">
-              <div className="icon flex items-center justify-center rounded-full w-8 h-8 border-2 mr-3" style={{ borderColor: '#00DBE4', color: '#00DBE4' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="icon flex items-center justify-center rounded-full w-14 h-14 border-2 mr-3" style={{ borderColor: '#00DBE4', color: '#00DBE4' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
@@ -110,8 +110,8 @@ function Hero() {
             </div>
 
             <div className="fact-feature mt-6 flex items-center">
-              <div className="icon flex items-center justify-center rounded-full w-8 h-8 border-2 mr-3" style={{ borderColor: '#FFD542', color: '#FFD542' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="icon flex items-center justify-center rounded-full w-14 h-14 border-2 mr-3" style={{ borderColor: '#FFD542', color: '#FFD542' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
@@ -119,8 +119,8 @@ function Hero() {
             </div>
 
             <div className="fact-feature mt-6 flex items-center">
-              <div className="icon flex items-center justify-center rounded-full w-8 h-8 border-2 mr-3" style={{ borderColor: '#EF62E9', color: '#EF62E9' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="icon flex items-center justify-center rounded-full w-14 h-14 border-2 mr-3" style={{ borderColor: '#EF62E9', color: '#EF62E9' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="20 6 9 17 4 12"></polyline>
                 </svg>
               </div>
